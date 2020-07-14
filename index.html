@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Air Quality Indicator</title>
+    <script src="aqi.js"></script>
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <link rel='stylesheet' href='style.css'>
+  </head>
+  <body>  
+    <div class="container">
+      <h1>Air Quality Indicator</h1>
+      <p class='time' id="time"></p>
+      <div class='aqi-container' id="containerPm25">
+        <div class='aqi-label'>AQI (PM2.5)</div>
+        <div class='aqi' id="aqiPm25"></div>
+        <div class='pm-label' id="pm25"></div>
+      </div>
+      <div class='aqi-container' id="containerPm10">
+        <div class='aqi-label'>AQI (PM10)</div>
+        <div class='aqi' id="aqiPm10"></div>
+        <div class='pm-label' id="pm10"></div>
+      </div>
+    </div>
+
+    <p></p>
+      <div id="chartContainerAqi" class="container" style="height: 370px; width: 100%;"></div>
+    <p></p>
+
+  </body>
+  <script type="text/javascript">
+    getData();
+    setInterval(getData, 60000);
+  </script>
+</html>
