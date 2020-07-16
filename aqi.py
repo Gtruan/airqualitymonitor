@@ -5,7 +5,7 @@
 from __future__ import print_function
 import serial, struct, sys, time, json, subprocess
 
-SLEEP_FOR_SECS=60
+SLEEP_FOR_SECS=600
 DEBUG = 0
 CMD_MODE = 2
 CMD_QUERY_DATA = 4
@@ -133,11 +133,9 @@ if __name__ == "__main__":
 
         # check if length is more than 100 and delete first element
         if len(data) > 200:
-            print("Backing up large data file to file [" + JSON_FILE +
-                  "-"+time.strftime("%d.%m.%Y %H:%M:%S") +"]")
-            with open(JSON_FILE+"-"+time.strftime("%d.%m.%Y %H:%M:%S"), 'w') as outfile:
+            with open(JSON_FILE+"-"+time.strftime("%d-%m-%Y_%H-%M-%S")+".json", 'w') as outfile:
                 json.dump(data, outfile)
-            data.clear()
+            del data[:]
 
         # append new values
         jsonrow = {'pm25': values[0], 'pm10': values[1], 'time': time.strftime("%d.%m.%Y %H:%M:%S")}
